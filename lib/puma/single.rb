@@ -12,9 +12,12 @@ module Puma
   # that this inherits from.
   class Single < Runner
     def stats
-      b = @server.backlog || 0
-      r = @server.running || 0
-      %Q!{ "backlog": #{b}, "running": #{r} }!
+      backlog = @server.backlog
+      running = @server.running
+      waiting = @server.waiting
+      busy = running - waiting
+
+      %Q!{ "backlog": #{backlog}, "running": #{running}, "busy": #{busy} }!
     end
 
     def restart

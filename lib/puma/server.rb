@@ -168,6 +168,10 @@ module Puma
       @thread_pool and @thread_pool.spawned
     end
 
+    def waiting
+      @thread_pool and @thread_pool.waiting
+    end
+
     # Lopez Mode == raw tcp apps
 
     def run_lopez_mode(background=true)
