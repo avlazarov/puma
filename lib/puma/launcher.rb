@@ -297,7 +297,7 @@ module Puma
     end
 
     def set_process_title
-      Process.respond_to?(:setproctitle) ? Process.setproctitle(title) : $0 = title
+      $0 = title
     end
 
     def title
